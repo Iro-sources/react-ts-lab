@@ -7,23 +7,31 @@ symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 print("Welcome to the PyPassword Generator!")
 nr_letters= int(input("How many letters would you like in your password?\n")) 
 nr_symbols = int(input(f"How many symbols would you like?\n"))
+nr_numbers = int(input(f"How many numbers would you like?\n"))
 
-random_letters = []
+password_list = []
 
-for i in range(nr_letters):
+for char in range(0, nr_letters):
     random_letter = random.choice(letters) 
-    random_letters.append(random_letter)
+    password_list.append(random_letter)
 
 
-random_symbols = []
-
-for _ in range(nr_symbols):
+for char in range(nr_symbols):
     random_symbol = random.choice(symbols)
-    random_symbols.append(random_symbol)
+    password_list.append(random_symbol)
 
-password = random_letters + random_symbols
+
+for char in range(nr_numbers):
+    random_number = random.choice(numbers)
+    password_list.append(random_number)
+
+random.shuffle(password_list)
+
+password = ""
+for char in password_list:
+    password += char
+
 print(password)
-#nr_numbers = int(input(f"How many numbers would you like?\n"))
 
 #Eazy Level - Order not randomised:
 #e.g. 4 letter, 2 symbol, 2 number = JduE&!91
